@@ -1,0 +1,37 @@
+<section>
+  <h1>Pokédex</h1>
+  <hr />
+  <input
+    type="text"
+    [(ngModel)]="newPokemonName"
+    placeholder="Nombre del Pokemon"
+  />
+  <br />
+  <br />
+  <input
+    type="text"
+    [(ngModel)]="newPokemonDescription"
+    placeholder="Descripción del pokemón"
+  />
+  <br />
+  <br />
+  <input type="text" [(ngModel)]="newPokemonType" placeholder="Grass" />
+  <br />
+  <br />
+  <button (click)="addNewPokemon()">Agregar un pokemón</button>
+</section>
+<hr />
+<section class="Pokemons__container">
+  <li *ngIf="pokemons.length === 0"><h2>Todavía no tenemos pokemons</h2></li>
+
+  <ul *ngFor="let pokemon of pokemons; index as i">
+    <li>
+      {{ i }}
+      <h2>{{ pokemon.name }}</h2>
+      <img width="200" src="{{ pokemon.image }}" alt="" />
+      <p>{{ pokemon.description }}</p>
+      <span>{{ pokemon.type }}</span>
+      <button (click)="deletePokemon(i)">Eliminar</button>
+    </li>
+  </ul>
+</section>
